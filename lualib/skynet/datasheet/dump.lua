@@ -67,9 +67,9 @@ function ctd.dump(root)
 				end
 			elseif t == "boolean" then
 				if v then
-					return '\3', "\0\0\0\0\0\0\0\1"
+					return '\3', string.pack("<i8", 1)
 				else
-					return '\3', "\0\0\0\0\0\0\0\0"
+					return '\3', string.pack("<i8", 0)
 				end
 			elseif t == "string" then
 				local offset = doc.strings[v]

@@ -220,13 +220,13 @@ pushvalue(lua_State *L, const void *v, int type, const struct document * doc) {
 		lua_pushnil(L);
 		break;
 	case VALUE_INTEGER:
-		lua_pushinteger(L, (int64_t)getuint64(v));
+		lua_pushinteger(L, (lua_Integer)getuint64(v));
 		break;
 	case VALUE_REAL:
-		lua_pushnumber(L, getdouble(v));
+		lua_pushnumber(L, (lua_Number)getdouble(v));
 		break;
 	case VALUE_BOOLEAN:
-		lua_pushboolean(L, getuint64(v));
+		lua_pushboolean(L, (int)(getuint64(v) != 0));
 		break;
 	case VALUE_TABLE:
 		create_proxy(L, doc, getuint64(v));
